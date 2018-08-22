@@ -62,8 +62,8 @@ async function addEvent(data)
     [
         data.roomid,
         data.name,
-        data.bookDate + " " + data.starttime + ":00",
-        data.bookDate + " " + data.endtime + ":00",
+        data.bookDate + " " + data.starttime,
+        data.bookDate + " " + data.endtime,
         data.userid,
         data.eventtype
     ]);

@@ -273,7 +273,6 @@ Primary style
   .cd-schedule .event-date {
     display: block;
     color: white;
-    font-weight: bold;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
@@ -292,8 +291,6 @@ Primary style
     /* they are not included in the the HTML but added using JavScript */
     font-size: 1.4rem;
     opacity: .7;
-    line-height: 1.2;
-    margin-bottom: .2em;
   }
   
   .cd-schedule .single-event[data-event="event-1"],
