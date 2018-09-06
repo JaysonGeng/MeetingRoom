@@ -15,7 +15,8 @@ module.exports =
             payload: 
             {
                 name:           fw.param.string().required(),
-                description:    fw.param.string().required()
+                description:    fw.param.string().required(),
+                color:          fw.param.string().required()
             }
         }                
       },
@@ -32,7 +33,8 @@ module.exports =
           {
               id:             fw.param.number().required(),
               name:           fw.param.string().required(),
-              description:    fw.param.string().required()
+              description:    fw.param.string().required(),
+              color:          fw.param.string().required()
           }        
         }
       }

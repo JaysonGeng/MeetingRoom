@@ -57,7 +57,7 @@ async function getTodayDashboard()
                 var startTimeDate = todayEvents[j].StartTime.split(" ")[1];
                 var endTimeDate = todayEvents[j].EndTime.split(" ")[1];
 
-                var length = 20;
+                var length = 15;
                 var trimmedName = todayEvents[j].Event.length > length ? 
                                     todayEvents[j].Event.substring(0, length - 3) + "..." : 
                                     todayEvents[j].Event;
@@ -80,13 +80,13 @@ async function getTodayDashboard()
 }
 
 function diff_minutes(dt2, dt1) 
- {
+{
 
-  var diff =(dt2.getTime() - dt1.getTime()) / 1000;
-  diff /= 60;
-  return Math.abs(Math.round(diff));
-  
- }
+var diff =(dt2.getTime() - dt1.getTime()) / 1000;
+diff /= 60;
+return Math.abs(Math.round(diff));
+
+}
 
 module.exports = 
 {

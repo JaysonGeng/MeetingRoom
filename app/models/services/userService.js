@@ -50,8 +50,6 @@ async function deleteUser(data)
     return await userDAO.deleteUser(data);
 }
 
-
-
 module.exports = 
 {
     validLogin,

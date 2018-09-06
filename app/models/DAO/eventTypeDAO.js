@@ -32,13 +32,14 @@ async function getEventTypeById(id)
 async function addEventType(data)
 {
     const SQL = 
-    `INSERT INTO EventTypes(name, description)
+    `INSERT INTO EventTypes(name, description, color)
     VALUES
-    (?,?)`;
+    (?,?,?)`;
     return await fw.db.execute('local',SQL,
     [
         data.name,
-        data.description
+        data.description,
+        data.color
     ]);
 }
 
@@ -47,12 +48,14 @@ async function updateEventType(data)
     const SQL = 
     `UPDATE EventTypes
     SET name = ?,
-    description = ?
+    description = ?,
+    color = ?
     WHERE id = ?`;
     return await fw.db.execute('local',SQL,
     [
         data.name, 
         data.description, 
+        data.color,
         data.id
     ]);
 }

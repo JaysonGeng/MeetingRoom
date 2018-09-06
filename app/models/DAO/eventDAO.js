@@ -35,7 +35,7 @@ async function getTodayEvents()
         e.start_time AS 'StartTime', 
         e.end_time AS 'EndTime', 
         u.name AS 'Organizer', 
-        et.name AS 'EventType'
+        et.color AS 'EventType'
     FROM Events e
     INNER JOIN Rooms r ON r.id = e.room_id
     INNER JOIN Users u ON u.id = e.user_id

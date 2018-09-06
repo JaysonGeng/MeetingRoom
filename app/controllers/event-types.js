@@ -80,7 +80,8 @@ function addEventType(request, h)
         const Params = 
         {
             name: request.payload.name,
-            description: request.payload.description
+            description: request.payload.description,
+            color: request.payload.color
         }
     
         await eventTypeService.addEventType(Params);
@@ -118,6 +119,7 @@ function editEventType(request, h)
         {
             name: request.payload.name,
             description: request.payload.description,
+            color: request.payload.color,
             id: request.payload.id
         }
     

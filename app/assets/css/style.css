@@ -7,21 +7,22 @@ Primary style
     box-sizing: border-box;
   }
   
-  html {
-    font-size: 62.5%;
+   .cd-schedule span,em {
+    font-size: 1.1rem !important;
   }
   
-  body {
+  .cd-schedule span {
     font-size: 1.6rem;
     font-family: "Source Sans Pro", sans-serif;
     color: #222222;
-    background-color: white;
   }
   
-  a {
+  .cd-schedule a {
     color: #A2B9B2;
     text-decoration: none;
   }
+
+  
   
   /* -------------------------------- 
   
@@ -329,7 +330,25 @@ Primary style
   .cd-schedule .single-event[data-event="event-4"]:hover {
     background: #f7bd7f;
   }
+
+  .cd-schedule .single-event[data-event="event-5"],
+  .cd-schedule [data-event="event-5"] .header-bg {
+    background: #7f0000;
+  }
   
+  .cd-schedule .single-event[data-event="event-5"]:hover {
+    background: #8b1919;
+  }
+
+  .cd-schedule .single-event[data-event="event-6"],
+  .cd-schedule [data-event="event-6"] .header-bg {
+    background: #b2497d;
+  }
+  
+  .cd-schedule .single-event[data-event="event-6"]:hover {
+    background: #b95b8a;
+  }
+
   .cd-schedule .event-modal {
     position: fixed;
     z-index: 3;
