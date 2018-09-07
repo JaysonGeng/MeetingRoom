@@ -14,7 +14,14 @@ const userService = fw.getService('user');
 function render(request, h) 
 {
     return new Promise(async function (resolve, reject) {
-        resolve(h.view('views/login', { title: 'Login' }, {layout: 'login.layout'}));
+        resolve(h.view('views/login', 
+            { 
+                title: 'Login' 
+            }, 
+            {
+                layout: 'login.layout'
+            }
+        ));
     });
 }
 

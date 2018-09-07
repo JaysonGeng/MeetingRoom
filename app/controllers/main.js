@@ -4,6 +4,7 @@
 const roomService = fw.getService('room');
 const userService = fw.getService('user');
 const emailService = fw.getService('email');
+const encrypterService = fw.getService('encrypter');
 
 //====================
 // Methods
@@ -58,14 +59,16 @@ function registerAccount(request,h)
             roleid: 2
         }
     
-        await userService.addUser(Params);
+        var response = await userService.addUser(Params);
+        var encryptedId = await encrypterService.encrypt("" + response.insertId);
         stResponse.success = true;
 
         const mailParams = 
         {
             to: request.payload.email,
             subject: "Confirm your Account Meeting Booking System",
-            body: "<h1>Test</h1>"
+            body: "<p>Go to this link to verify your account</p>" + 
+                "<a href='http://localhost:3030/verify/" + encryptedId + "' >Verify</a>" 
         }
         emailService.sendEmail(mailParams);
         resolve(stResponse);     

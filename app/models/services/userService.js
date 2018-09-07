@@ -50,6 +50,10 @@ async function deleteUser(data)
     return await userDAO.deleteUser(data);
 }
 
+async function verifyAccount(id){
+    return await userDAO.verifyAccount(id);
+}
+
 module.exports = 
 {
     validLogin,
@@ -58,5 +62,6 @@ module.exports =
     getUserbyEmail,
     addUser,
     updateUser,
-    deleteUser
+    deleteUser,
+    verifyAccount
 }

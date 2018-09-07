@@ -54,5 +54,20 @@ module.exports =
           }        
         }        
       } 
+  },
+  { 
+    method: 'GET', path: '/verify/{n}', 
+    options: { 
+      handler: UsersCtrl.verifyAccount,
+      auth: false,
+      tags: ['api'],
+      validate: 
+        {
+          params: 
+          {
+              n:       fw.param.string().required()
+          }        
+        }  
+    } 
   }
 ];

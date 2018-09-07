@@ -71,6 +71,13 @@ async function deleteUser(id)
     return await fw.db.execute('local',SQL,[id]);
 }
 
+async function verifyAccount(id){
+    const SQL = 
+    `UPDATE Users
+    SET confirmed = ?
+    WHERE ID = ?`;
+    return await fw.db.execute('local',SQL,[true, id]);
+}   
 
 module.exports = 
 {
@@ -79,5 +86,6 @@ module.exports =
     getUser,
     addUser,
     updateUser,
-    deleteUser
+    deleteUser,
+    verifyAccount
 }

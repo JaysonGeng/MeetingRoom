@@ -3,6 +3,7 @@
 //====================
 const usersService = fw.getService('user');
 const rolesService = fw.getService('roles');
+const encrypterService = fw.getService('encrypter');
 
 //====================
 // Methods
@@ -178,6 +179,23 @@ function deleteUser(request, h)
     });    
 }
 
+function verifyAccount(request, h){
+    return fw.promise(async (resolve,reject) => 
+    {
+        var n = request.params.n;
+        var decryptedId = await encrypterService.decrypt(n);
+        const success = await usersService.verifyAccount(decryptedId);
+        if(success){
+            resolve(h.redirect('/login'));
+            return;
+        }
+        else{
+            resolve(h.redirect('/register'));
+            return;
+        }
+    });    
+}
+
 module.exports = 
 {
     renderMain,
@@ -186,5 +204,6 @@ module.exports =
     renderAdd,
     addUser,
     editUser,
-    deleteUser
+    deleteUser,
+    verifyAccount
 }

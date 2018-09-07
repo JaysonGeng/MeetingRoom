@@ -19,7 +19,7 @@ async function sendEmail(data)
         from: 'silverpop@sanservices.hn',
         to: data.to,
         subject: data.subject,
-        text: data.body
+        html: data.body
     };
     transporter.sendMail(mailOptions, function(error, info){
         if (error)
