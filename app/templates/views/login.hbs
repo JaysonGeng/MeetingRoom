@@ -1,6 +1,29 @@
 <script src="/assets/js/login.js"></script>
 
 <form class="form-signin" action="javascript:submitform()">
+    <div class="container">
+        {{#ifCond messageCode "==" 1}}
+            <div class="alert alert-success alert-dismissible">
+                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                <strong>Success!</strong> Account verified successfully.
+            </div>    
+        {{/ifCond}}
+
+        {{#ifCond messageCode "==" 2}}
+            <div class="alert alert-danger alert-dismissible">
+                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                <strong>Error!</strong> Unable to verify account.
+            </div>
+        {{/ifCond}}
+
+        {{#ifCond messageCode "==" 3}}
+            <div class="alert alert-info alert-dismissible">
+                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                <strong>Info!</strong> Account is already verified.
+            </div>
+        {{/ifCond}}
+    </div>
+    
     <div class="text-center mb-4">
         <h1 class="h3 mb-3 font-weight-normal">Meeting Booking System</h1>
     </div>

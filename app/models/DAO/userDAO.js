@@ -49,7 +49,6 @@ async function addUser(data)
 
 async function updateUser(data)
 {
-    console.log(data);
     const SQL = 
     `UPDATE Users
     SET email = ?,
@@ -76,8 +75,17 @@ async function verifyAccount(id){
     `UPDATE Users
     SET confirmed = ?
     WHERE ID = ?`;
-    return await fw.db.execute('local',SQL,[true, id]);
-}   
+    return await fw.db.execute('local',SQL,[1, id]);
+}
+
+async function isVerified(id){
+    const SQL = 
+    `SELECT * 
+    FROM Users
+    WHERE ID = ?`;
+    var response = await fw.db.execute('local',SQL,[id]);
+    return response[0].confirmed;
+}
 
 module.exports = 
 {
@@ -87,5 +95,6 @@ module.exports =
     addUser,
     updateUser,
     deleteUser,
-    verifyAccount
+    verifyAccount,
+    isVerified
 }

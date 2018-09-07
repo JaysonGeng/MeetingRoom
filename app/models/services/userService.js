@@ -13,8 +13,9 @@ async function validLogin(email, password)
     if(Account.length > 0)
     {        
         Account = Account[0];
-        if(fw.utils.getMD5(password+Account.salt) == Account.password)
+        if(fw.utils.getMD5(password+Account.salt) == Account.password){
             return Account;
+        }            
     }
         
     return false;
@@ -50,8 +51,26 @@ async function deleteUser(data)
     return await userDAO.deleteUser(data);
 }
 
+/**
+ * Verify Account
+ * @return 1 verified successfully
+ * @return 2 unable to verify
+ * @return 3 already verified
+ */
 async function verifyAccount(id){
-    return await userDAO.verifyAccount(id);
+    var alreadyVerified = await userDAO.isVerified(id);
+    if(alreadyVerified){
+        return 3;
+    }
+    else{
+        try{
+            await userDAO.verifyAccount(id);
+            return 1;
+        }
+        catch(e){
+            return 2;
+        }
+    }
 }
 
 module.exports = 

@@ -51,12 +51,12 @@ module.exports =
           payload: 
           {
               userid:       fw.param.number().required(),
-          }        
-        }        
+          }
+        }
       } 
   },
   { 
-    method: 'GET', path: '/verify/{n}', 
+    method: 'GET', path: '/verify/{n}',   
     options: { 
       handler: UsersCtrl.verifyAccount,
       auth: false,

@@ -14,9 +14,10 @@ const userService = fw.getService('user');
 function render(request, h) 
 {
     return new Promise(async function (resolve, reject) {
-        resolve(h.view('views/login', 
+        resolve(h.view('views/login',
             { 
-                title: 'Login' 
+                title: 'Login',
+                messageCode: request.params.messageCode
             }, 
             {
                 layout: 'login.layout'
@@ -43,6 +44,14 @@ function login(request,h)
         {
             stResponse.success = false;
             stResponse.message = 'Invalid Credentials';
+        }
+        else if(!Account.active){
+            stResponse.success = false;
+            stResponse.message = 'Account is not active.';
+        }
+        else if(!Account.confirmed){
+            stResponse.success = false;
+            stResponse.message = 'Account is not verified, check your email.';
         }
         else
         {

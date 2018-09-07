@@ -179,20 +179,14 @@ function deleteUser(request, h)
     });    
 }
 
-function verifyAccount(request, h){
+function verifyAccount(request, h){ 
     return fw.promise(async (resolve,reject) => 
     {
         var n = request.params.n;
         var decryptedId = await encrypterService.decrypt(n);
-        const success = await usersService.verifyAccount(decryptedId);
-        if(success){
-            resolve(h.redirect('/login'));
-            return;
-        }
-        else{
-            resolve(h.redirect('/register'));
-            return;
-        }
+        const messageCode = await usersService.verifyAccount(decryptedId);
+        resolve(h.redirect('/login/'+ messageCode));
+        return;
     });    
 }
 
