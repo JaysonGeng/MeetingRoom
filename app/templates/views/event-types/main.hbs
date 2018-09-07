@@ -15,13 +15,15 @@
             <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
             <strong class="d-block text-gray-dark">{{name}}</strong>
             {{description}}
-            </p>          
-            <div class="btn-group btn-group-sm" role="group" aria-label="Basic example" style="position:absolute;right:35px">
-                <button type="button" class="btn btn-secondary" onclick="window.location='/event-types/edit?id={{id}}'">
-                    <span data-feather="edit"></span>edit</button>
-                <button type="button" class="btn btn-secondary" onclick="deleteprompt({{id}})">
-                    <span data-feather="trash"></span>delete</button>
-            </div>                        
+            </p>
+            {{#ifCond ../session.userAccount.role_id '==' 1}}
+                <div class="btn-group btn-group-sm" role="group" aria-label="Basic example" style="position:absolute;right:35px">
+                    <button type="button" class="btn btn-secondary" onclick="window.location='/event-types/edit?id={{id}}'">
+                        <span data-feather="edit"></span></button>
+                    <button type="button" class="btn btn-secondary" onclick="deleteprompt({{id}})">
+                        <span data-feather="trash"></span></button>
+                </div>
+            {{/ifCond}}
         </div>
     {{/each}}
 </div>

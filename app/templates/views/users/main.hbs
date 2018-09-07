@@ -15,12 +15,14 @@
             <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
             <strong class="d-block text-gray-dark">{{name}} ({{role}}) <span class="badge badge-success">Active</span></strong>
             {{email}}
-            </p>          
-            <div class="btn-group btn-group-sm" role="group" aria-label="Basic example" style="position:absolute;right:35px">
-                <button type="button" class="btn btn-secondary" onclick="window.location='/users/view?id={{id}}'"><span data-feather="info"></span></button>
-                <button type="button" class="btn btn-secondary" onclick="window.location='/users/edit?id={{id}}'"><span data-feather="edit"></span></button>
-                <button type="button" class="btn btn-secondary" onclick="deleteprompt({{id}})" {{#ifCond id '==' ../session.userAccount.ID}}disabled{{/ifCond}}><span data-feather="trash"></span></button>
-            </div>                        
+            </p>
+            {{#ifCond ../session.userAccount.role_id '==' 1}}
+                <div class="btn-group btn-group-sm" role="group" aria-label="Basic example" style="position:absolute;right:35px">
+                    <button type="button" class="btn btn-secondary" onclick="window.location='/users/view?id={{id}}'"><span data-feather="info"></span></button>
+                    <button type="button" class="btn btn-secondary" onclick="window.location='/users/edit?id={{id}}'"><span data-feather="edit"></span></button>
+                    <button type="button" class="btn btn-secondary" onclick="deleteprompt({{id}})" {{#ifCond id '==' ../session.userAccount.ID}}disabled{{/ifCond}}><span data-feather="trash"></span></button>
+                </div>
+            {{/ifCond}}
         </div>
     {{/each}}
 </div>
